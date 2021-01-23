@@ -16,9 +16,9 @@ class JobController extends Controller
     {
         $jobs = Job::all();
         // Return collection of jobs as a resource
+        // echo phpinfo();
         
-        
-        return view('jobs',['jobs'=> $jobs]);
+        return view('jobs', compact('jobs'));
     }
 
     /**
