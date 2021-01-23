@@ -15,8 +15,6 @@ class JobController extends Controller
     public function index()
     {
         $jobs = Job::all();
-        // Return collection of jobs as a resource
-        // echo phpinfo();
         
         return view('jobs', compact('jobs'));
     }
