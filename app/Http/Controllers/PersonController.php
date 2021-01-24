@@ -2,22 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Person;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class UserSettingController extends Controller
+class PersonController extends Controller
 {
     /**
      * Display a listing of the resource.
-     * $person object
+     *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $person = Auth::user()->person;
-        return view('user_settings', compact('person'));
-        
+        //
     }
 
     /**
@@ -44,10 +41,10 @@ class UserSettingController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Person  $person
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Person $person)
     {
         //
     }
@@ -55,10 +52,10 @@ class UserSettingController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Person  $person
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Person $person)
     {
         //
     }
@@ -67,10 +64,10 @@ class UserSettingController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Person  $person
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Person $person)
     {
         //
     }
@@ -78,10 +75,10 @@ class UserSettingController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Person  $person
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Person $person)
     {
         //
     }
