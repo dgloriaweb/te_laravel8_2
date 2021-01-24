@@ -33,7 +33,7 @@
                                     </div>
                                     <span class="progress-completed">&nbsp;65%</span>
                                 </div>
-    
+                                <div class="text-blue-700 hover:text-purple-800 underline"><a href="{{ route('user_settings') }}">Go to user settings</a></div>
                                 
                             </div>
                         </div>
