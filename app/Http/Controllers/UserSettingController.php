@@ -4,19 +4,31 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Services\PersonService;
 use Illuminate\Support\Facades\Auth;
 
 class UserSettingController extends Controller
 {
     /**
      * Display a listing of the resource.
-     * $person object
+     * $workprefs object
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
         $person = Auth::user()->person;
-        return view('user_settings', compact('person'));
+        // dd($person->id);
+        $personService = new PersonService($person);
+        $workprefsArray = $personService->getWorkprefsById($person->id);
+        
+        $data = [
+            'title' => 'Personal settings',
+            'modaltitle' => 'edit work day, time and location preferences',
+            'modaltext' => 'select or deselect preferred options.',
+            'workprefs_array' => $workprefsArray,
+        ];
+
+        return view('user_settings', $data);
         
     }
 
