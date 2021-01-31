@@ -7,16 +7,28 @@
 
     <div class="p-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                User Settings for {{ Auth::user()->name }}
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-4">
+                <div class="text-xl">
+
+                    User Settings for {{ Auth::user()->name }}
+                </div>
                 <br />
-                {{ $workprefs_array['workplace'] }}
 
 
-                <h2>Skills</h2>
+                <div class="text-lg">Working hours and workday preferences</div>
                 <div class="row">
                     <div class="col">
-                        <h3>List skills here</h3>
+                        <ul>
+                            @foreach($workprefs_array as $workprefs=>$values)
+                            @if($workprefs!='id')
+                            <li>
+                                {{$workprefs}} - 
+                                
+                                {{$values}}
+                            </li>
+                            @endif
+                            @endforeach
+                        </ul>
                     </div>
                     <div class="col">
                         <!-- Button trigger modal -->
@@ -32,9 +44,9 @@
 
 
 
-                <h2>
+                <div class="text-lg">
                     Drivers' Licenses
-                </h2>
+                </div>
                 <div class="row">
                     <div class="col">
                         <h3>List Drivers Licenses here</h3>
@@ -51,9 +63,9 @@
                 </div>
                 <hr>
 
-                <h2>
-                    Working hours and workday preferences
-                </h2>
+                <div class="text-lg">
+                    Skills
+                </div>
 
                 <div class="row">
                     <div class="col">

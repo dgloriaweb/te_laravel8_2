@@ -20,16 +20,15 @@ class UserSettingController extends Controller
         // dd($person->id);
         $personService = new PersonService($person);
         $workprefsArray = $personService->getWorkprefsById($person->id);
-        
+
         $data = [
             'title' => 'Personal settings',
             'modaltitle' => 'edit work day, time and location preferences',
             'modaltext' => 'select or deselect preferred options.',
             'workprefs_array' => $workprefsArray,
         ];
-
+        // return new PersonService($person);
         return view('user_settings', $data);
-        
     }
 
     /**
