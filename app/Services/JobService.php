@@ -14,11 +14,11 @@ class JobService implements JobServiceInterface
         $this->job = $job;
     }
 
-    public  function getWorkprefsById()
+    public  function getWorkpreferencesById()
     {
         if ($this->job) {
-            //setup this->workprefs array with the real user data
-            $workprefsArray = [
+            //setup this->workpreferences array with the real user data
+            $workpreferences = [
                 'id' => $this->job->id,
                 'workplace' => $this->job->workplace,
                 'remote' => $this->job->remote,
@@ -35,7 +35,7 @@ class JobService implements JobServiceInterface
                 'overtime' => $this->job->overtime
             ];
 
-            return $workprefsArray;
+            return $workpreferences;
         }
     }
     public  function storeWorkPrefChanges($request)

@@ -12,7 +12,7 @@ class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
-     * $workprefs object
+     * $workpreferences object
      * @return \Illuminate\Http\Response
      */
     public function index()
@@ -20,16 +20,20 @@ class DashboardController extends Controller
         $person = Auth::user()->person;
         // dd($person->id);
         $personService = new PersonService($person);
-        $workprefsArray = $personService->getWorkprefsById($person->id);
+        $workpreferences = $personService->getWorkpreferencesById($person->id);
 
         $propertyService = new PropertyService($person);
+        $personProperties = $propertyService->getPersonProperties();
 
+        $drivingLicenses = $propertyService->getPersonPropertiesWithDrivingLicenses();
 
         $data = [
             'title' => 'Personal settings',
             'modaltitle' => 'edit work day, time and location preferences',
             'modaltext' => 'select or deselect preferred options.',
-            'workprefs_array' => $workprefsArray,
+            'workpreferences' => $workpreferences,
+            'personProperties' => $personProperties,
+            'drivingLicenses' => $drivingLicenses
         ];
         // return new PersonService($person);
         return view('dashboard', $data);

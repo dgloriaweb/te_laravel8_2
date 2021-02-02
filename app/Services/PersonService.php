@@ -65,12 +65,12 @@ class PersonService
         return WorkPreferenceService::workPrefSelectionCasesDays($workPrefDayCase);
     }
 
-    public  function getWorkprefsById($personId)
+    public  function getWorkpreferencesById($personId)
     {
         $existingUser = Person::getPersonById($personId);
         if ($existingUser) {
-            //setup this->workprefs array with the real user data
-            $workprefsArray = [
+            //setup this->workpreferences array with the real user data
+            $workpreferences = [
                 'id'=>$existingUser->id,
                 'workplace' => $existingUser->workplace,
                 'remote' => $existingUser->remote,
@@ -86,33 +86,7 @@ class PersonService
                 'other_shift_only' => $existingUser->other_shift_only,
                 'overtime' => $existingUser->overtime
             ];
-            //old code
-            // $workprefsArray = [
-            //     'workprefs_array' => [
-            //         'location' => [
-            //             'workplace' => $existingUser->workplace,
-            //             'remote' => $existingUser->remote,
-            //         ],
-            //         'days' => [
-            //             'workdays' => $existingUser->workdays,
-            //             'saturday' => $existingUser->saturday,
-            //             'sunday' => $existingUser->sunday,
-            //             'bank_holidays' => $existingUser->bank_holidays,
-            //             'sat_sun_bh_only' => $existingUser->sat_sun_bh_only,
-            //         ],
-            //         'hours' => [
-            //             'normal_hours' => $existingUser->normal_hours,
-            //             'nightshift' => $existingUser->nightshift,
-            //             'nightshift_only' => $existingUser->nightshift_only,
-            //             'other_shift' => $existingUser->other_shift,
-            //             'other_shift_only' => $existingUser->other_shift_only,
-            //         ],
-            //         'overtime' => [
-            //             'overtime' => $existingUser->Overtime
-            //         ]
-            //     ]
-            // ];
-            return $workprefsArray;
+            return $workpreferences;
         }
     }
 

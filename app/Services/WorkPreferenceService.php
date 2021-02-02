@@ -9,8 +9,8 @@ class WorkPreferenceService
     //columns: jobs, rows: persons
     //numbers in order: normal_hours, nightshift, nightshift_only, other_shift, other_shift_only
 
-    public static $workprefsArray = [
-        'workprefs_array' => [
+    public static $workpreferences = [
+        'workpreferences' => [
             'location' => [
                 'workplace' => 'Workplace',
                 'remote' => 'Remote',

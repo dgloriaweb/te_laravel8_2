@@ -137,8 +137,8 @@ class RateService
         $totalDayAndHourScore = $hourWeight + $dayWeight;
         
         //match rate
-        $workprefsMatchRate = ($totalDayAndHourScore / $totalScore);
-        return  intval($workprefsMatchRate * 100);
+        $workpreferencesMatchRate = ($totalDayAndHourScore / $totalScore);
+        return  intval($workpreferencesMatchRate * 100);
     }
     
     /**
@@ -201,8 +201,8 @@ class RateService
         $skillsRate = $this->getSkillsRate();
         $driversLicensesRate = $this->getDriversLicenseRate();
         
-        $workPrefsRate = $this->getWorkPrefRate();
-        $a = [$skillsRate, $driversLicensesRate, $workPrefsRate];
+        $workpreferencesRate = $this->getWorkPrefRate();
+        $a = [$skillsRate, $driversLicensesRate, $workpreferencesRate];
         if (count($a)) {
             $averageRate = array_sum($a) / count($a);
         }

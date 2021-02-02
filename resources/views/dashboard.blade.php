@@ -47,10 +47,10 @@
                     <div class="row">
                         <div class="col">
                             <ul>
-                                @foreach($workprefs_array as $workprefs=>$values)
-                                @if($workprefs!='id')
+                                @foreach($workpreferences as $workpreferences=>$values)
+                                @if($workpreferences!='id')
                                 <li>
-                                    {{$workprefs}} -
+                                    {{$workpreferences}} -
                                     @if($values==1)<i class="fas fa-check"></i>
                                     @else <i class="fas fa-ban"></i>
                                     @endif
@@ -64,12 +64,23 @@
 
 
 
+                    {{-- drivers licenses --}}
                     <div class="text-lg">
                         Drivers' Licenses
                     </div>
                     <div class="row">
                         <div class="col">
-                            <h3>List Drivers Licenses here</h3>
+
+                            @foreach ($drivingLicenses as $drivingLicense)
+
+                            {{-- TODO: check for error: if driversLicense returns an array of more than one element, that means we have duplicate in the properties table! --}}
+                           
+                            <hr>
+                            Drivers license type: {{$drivingLicense->driversLicense->drivers_license}}
+                            <br/>
+                            Driving years: {{$drivingLicense->driving_years}}
+<br/>
+                            @endforeach
                         </div>
                     </div>
                     <hr>
@@ -80,7 +91,7 @@
 
                     <div class="row">
                         <div class="col">
-                            <h3>List workprefs here</h3>
+                            <h3>List workpreferences here</h3>
                         </div>
                     </div>
                     <hr>
