@@ -26,6 +26,8 @@ class DashboardController extends Controller
         $personProperties = $propertyService->getPersonProperties();
 
         $drivingLicenses = $propertyService->getPersonPropertiesWithDrivingLicenses();
+        $skills = $propertyService->getPersonPropertiesWithSkills();
+        // dd($skills);
 
         $data = [
             'title' => 'Personal settings',
@@ -33,7 +35,8 @@ class DashboardController extends Controller
             'modaltext' => 'select or deselect preferred options.',
             'workpreferences' => $workpreferences,
             'personProperties' => $personProperties,
-            'drivingLicenses' => $drivingLicenses
+            'drivingLicenses' => $drivingLicenses,
+            'skills' => $skills
         ];
         // return new PersonService($person);
         return view('dashboard', $data);

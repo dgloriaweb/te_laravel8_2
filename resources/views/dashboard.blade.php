@@ -91,7 +91,10 @@
 
                     <div class="row">
                         <div class="col">
-                            <h3>List workpreferences here</h3>
+                            @foreach($skills as $skill)
+                            {{$skill->skill->skill}}
+                            <br/>
+                            @endforeach
                         </div>
                     </div>
                     <hr>

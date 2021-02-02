@@ -25,5 +25,13 @@ class Property extends Model
         return $this->belongsTo('App\Models\Driver','prop_link_id','id');
     }
 
+   /**
+     * A property belongs to one drivers license
+     */
+    public function skill()
+    {
+        return $this->belongsTo('App\Models\Skill','prop_link_id','id');
+    }
+
    
 }

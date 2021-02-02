@@ -28,4 +28,12 @@ class PropertyService
         ->with('driversLicense')->get();
         return $personProperties;
     }
+
+    public function getPersonPropertiesWithSkills()
+    {
+        $personProperties= Property::where('person_id', $this->person->id)
+        ->where('prop_link_type', 'skill')
+        ->with('skill')->get();
+        return $personProperties;
+    }
 }
