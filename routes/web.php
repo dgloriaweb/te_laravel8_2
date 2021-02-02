@@ -18,12 +18,9 @@ use Illuminate\Support\Facades\Route;
 // });
 
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->get('/', '\App\Http\Controllers\DashboardController@index')->name('dashboard');
 
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/admin', '\App\Http\Controllers\AdminController@index')->name('admin');
 Route::middleware(['auth:sanctum', 'verified'])->get('/jobs', '\App\Http\Controllers\JobController@index')->name('jobs');
-Route::middleware(['auth:sanctum', 'verified'])->get('/user_settings', '\App\Http\Controllers\UserSettingController@index')->name('user_settings');

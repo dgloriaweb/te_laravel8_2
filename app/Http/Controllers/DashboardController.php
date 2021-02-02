@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Services\PersonService;
+use App\Services\PropertyService;
 use Illuminate\Support\Facades\Auth;
 
-class UserSettingController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,6 +22,9 @@ class UserSettingController extends Controller
         $personService = new PersonService($person);
         $workprefsArray = $personService->getWorkprefsById($person->id);
 
+        $propertyService = new PropertyService($person);
+
+
         $data = [
             'title' => 'Personal settings',
             'modaltitle' => 'edit work day, time and location preferences',
@@ -28,7 +32,7 @@ class UserSettingController extends Controller
             'workprefs_array' => $workprefsArray,
         ];
         // return new PersonService($person);
-        return view('user_settings', $data);
+        return view('dashboard', $data);
     }
 
     /**

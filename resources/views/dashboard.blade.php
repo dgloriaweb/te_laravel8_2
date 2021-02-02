@@ -25,14 +25,73 @@
                         <h5><a href="#">Potter</a></h5>
 
                     </div>
-                    <div class="text-blue-700 hover:text-purple-800 underline">
-                        <a href="{{ route('user_settings') }}">Go to user settings</a>
-                    </div>
 
                 </div>
             </div>
             <br>
         </div>
+
+
+        {{-- user settings --}}
+        <div class="p-12">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-4">
+                    <div class="text-xl">
+
+                        User Settings for {{ Auth::user()->name }}
+                    </div>
+                    <br />
+
+
+                    <div class="text-lg">Working hours and workday preferences</div>
+                    <div class="row">
+                        <div class="col">
+                            <ul>
+                                @foreach($workprefs_array as $workprefs=>$values)
+                                @if($workprefs!='id')
+                                <li>
+                                    {{$workprefs}} -
+                                    @if($values==1)<i class="fas fa-check"></i>
+                                    @else <i class="fas fa-ban"></i>
+                                    @endif
+                                </li>
+                                @endif
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                    <hr>
+
+
+
+                    <div class="text-lg">
+                        Drivers' Licenses
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h3>List Drivers Licenses here</h3>
+                        </div>
+                    </div>
+                    <hr>
+
+                    <div class="text-lg">
+                        Skills
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <h3>List workprefs here</h3>
+                        </div>
+                    </div>
+                    <hr>
+
+
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
 
 
 
