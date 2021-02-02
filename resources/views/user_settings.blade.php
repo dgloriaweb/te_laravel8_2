@@ -23,8 +23,9 @@
                             @if($workprefs!='id')
                             <li>
                                 {{$workprefs}} - 
-                                
-                                {{$values}}
+                                @if($values==1)<i class="fas fa-check"></i>
+                                @else <i class="fas fa-ban"></i>
+                                @endif
                             </li>
                             @endif
                             @endforeach
