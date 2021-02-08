@@ -19,7 +19,7 @@ class PersonJobService
     public function getAllJobMatchRates()
     {
         //get all jobs from database
-        $jobs = Job::get(['id', 'job_name'])->toArray();
+        $jobs = Job::get()->toArray();
         //need job_id and job_name from jobs table
         //need to go through all jobs, and calculate each rate individually
         foreach ($jobs as $key => $value) {

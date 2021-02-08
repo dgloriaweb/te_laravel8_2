@@ -26,7 +26,7 @@
                 <div>Location:</div>
                 <div>Workplace or remote or both</div>
                 <div>Preferred working days</div>
-                <div>Workdays</div>
+                                                     <div>Workdays</div> @if($all_job_match_rate['workdays'] == $workpreferences['days']['workdays']) <i class="fas fa-thumbs-up text-xs"></i> @else <i class="far fa-thumbs-down text-xs"></i> @endif
                 <div>Saturday</div>
                 <div>Sunday</div>
                 <div>bank holidays</div>

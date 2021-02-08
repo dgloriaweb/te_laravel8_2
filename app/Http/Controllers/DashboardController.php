@@ -49,6 +49,23 @@ class DashboardController extends Controller
                 0 => array:5 [▼
                     "id" => 3
                     "job_name" => "CNC machinist"
+                    "workplace" => 1
+                    "remote" => 0
+                    "workdays" => 0
+                    "saturday" => 0
+                    "sunday" => 0
+                    "bank_holidays" => 0
+                    "sat_sun_bh_only" => 1
+                    "normal_hours" => 0
+                    "nightshift" => 0
+                    "nightshift_only" => 0
+                    "other_shift" => 1
+                    "other_shift_only" => 1
+                    "overtime" => 0
+                    "keywords" => "CNC operator, CNC setter,CNC lathe,CNC mills"
+                    "similar_jobs" => ""
+                    "created_at" => "2020-11-04T03:06:05.000000Z"
+                    "updated_at" => null
                     "job_drivers_licenses" => array:1 [▼
                     0 => array:7 [▶]
                     ]
@@ -67,8 +84,7 @@ class DashboardController extends Controller
                 ]
                 1 => array:5 [▶]
         */
-
-
+        // dd($workpreferences);
         // return new PersonService($person);
         return view('dashboard', $data);
     }
