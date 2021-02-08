@@ -35,8 +35,25 @@ class PersonJobService
         usort($jobs, function ($a, $b) use ($column) {
             return $b[$column] <=> $a[$column];
         });
-        
+
         //return full array
         return $jobs;
+    }
+
+    public function getJobMatchRate($id)
+    {
+        //get all jobs from database
+        $job = Job::get(['id', 'job_name'])
+            ->where('id', $id)->first();
+            //need job_id and job_name from jobs table
+            //need to go through all jobs, and calculate each rate individually
+            //get skills rate
+            $rateService = new RateService($this->person, $job);
+            $job_rate = $rateService->getAverageRate();
+            $job['job_rate'] = $job_rate;
+            
+            dd($job);
+        //return full array
+        return $job;
     }
 }

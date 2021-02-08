@@ -20,7 +20,7 @@
                             @else
                             <i class="far fa-thumbs-down text-xs"></i>
                             @endif
-                            <a href="jobs/{{$all_job_match_rate['id']}}">
+                            <a href="userjobs/{{$all_job_match_rate['id']}}">
                                 {{$all_job_match_rate['job_name']}}
                             </a>
                         </div>

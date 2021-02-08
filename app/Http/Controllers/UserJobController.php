@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Job;
+use App\Services\PersonJobService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class JobController extends Controller
+class UserJobController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +16,6 @@ class JobController extends Controller
      */
     public function index()
     {
-        $jobs = Job::all();
-        
-        return view('jobs', compact('jobs'));
     }
 
     /**
@@ -48,9 +47,13 @@ class JobController extends Controller
      */
     public function show($id)
     {
+        $person = Auth::user()->person;
+        $job = job::getJobById($id);
+        $data['job'] = $job;
+     
+        //return matches from user too
 
-      
-        //
+        return view('user_jobs', $data);
     }
 
     /**

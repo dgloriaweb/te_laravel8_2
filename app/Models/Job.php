@@ -57,6 +57,8 @@ class Job extends Model
         // ->first();
 
         return Job::where('id', $jobId)
+        ->with('jobRequirements')
+        ->with('jobDriversLicenses')
         ->first();
     }
 
