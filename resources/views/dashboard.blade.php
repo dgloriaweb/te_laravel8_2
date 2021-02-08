@@ -6,35 +6,40 @@
     <div class="personal_results lg:px-12 sm:p-1">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-4">
-                @if($all_job_match_rates[0]['job_rate']<60) You haven't got a job that matches more than 40%, is it
-                    because you didn't provide enough data? Based on that I cannot give you recommendation for a future
-                    career. Please scroll down and fill in more data to continue. @else <div class="p6">
+
+                <div class="p6">
                     <div class="text-xl">
                         Recommended jobs
                     </div>
-                    <div class="grid grid-cols-3">
+                    <div class="grid grid-cols-12">
                         @foreach ($all_job_match_rates as $all_job_match_rate)
-                        <div class="col-span-2">
+                        <div class="col-span-4">
                             @if ($all_job_match_rate['job_rate']>50)
                             <i class="fas fa-thumbs-up text-xs"></i>
                             @else
                             <i class="far fa-thumbs-down text-xs"></i>
                             @endif
-                            <a href="userjobs/{{$all_job_match_rate['id']}}">
+                            <a href="#" onclick="openJobContent()">
                                 {{$all_job_match_rate['job_name']}}
                             </a>
                         </div>
                         <div class="col-span-1">
-                            Job rate: {{$all_job_match_rate['job_rate']}} 
+                            Job rate: {{$all_job_match_rate['job_rate']}}
                             <i class="fas fa-percent text-xs"></i>
+                        </div>
+                        <div class="col-span-7 bg-gray-50">
+                            <div class="jobContent hidden"  id="myDIV">
+
+                                {{$all_job_match_rate['job_name']}}
+                            </div>
                         </div>
                         @endforeach
                     </div>
 
+                </div>
+
             </div>
-            @endif
         </div>
-    </div>
     </div>
 
     {{-- user settings --}}
@@ -122,5 +127,19 @@
             </div>
         </div>
     </div>
+
+    {{--test toggle--}}
+
+
+    <script>
+        function openJobContent() {
+            var x = document.getElementById("myDIV");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
 
 </x-app-layout>
