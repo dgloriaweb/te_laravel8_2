@@ -43,6 +43,7 @@ class DashboardController extends Controller
         //show matching jobs array
         //job id is required, job name, match rate
         $personJobService = new PersonJobService($person);
+        $data['all_job_match_rates'] = array_slice($personJobService->getAllJobMatchRates(), 0, 10);
         /*$data['all_job_match_rates'] =
                 array:10 [▼
                 0 => array:5 [▼
@@ -67,7 +68,6 @@ class DashboardController extends Controller
                 1 => array:5 [▶]
         */
 
-        $data['all_job_match_rates'] = array_slice($personJobService->getAllJobMatchRates(), 0, 10);
 
         // return new PersonService($person);
         return view('dashboard', $data);
