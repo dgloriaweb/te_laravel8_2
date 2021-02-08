@@ -52,7 +52,7 @@ class PersonJobService
             $job_rate = $rateService->getAverageRate();
             $job['job_rate'] = $job_rate;
             
-            dd($job);
+
         //return full array
         return $job;
     }

@@ -24,5 +24,4 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/', '\App\Http\Controllers
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/admin', '\App\Http\Controllers\AdminController@index')->name('admin');
 Route::middleware(['auth:sanctum', 'verified'])->get('/jobs', '\App\Http\Controllers\JobController@index')->name('jobs');
-Route::middleware(['auth:sanctum', 'verified'])->get('/userjobs/{id}', '\App\Http\Controllers\UserJobController@show');
 

@@ -52,17 +52,9 @@ class Job extends Model
      */
     public static function getJobById($jobId)
     {
-        // return Job::where('id', $jobId)
-        // ->with('jobDriversLicenses')
-        // ->first();
-
         return Job::where('id', $jobId)
-        ->with('jobRequirements')
-        ->with('jobDriversLicenses')
-        ->first();
+            ->with('jobRequirements')
+            ->with('jobDriversLicenses')
+            ->first();
     }
-
-    
-
 }
-

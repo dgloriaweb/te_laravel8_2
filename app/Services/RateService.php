@@ -23,6 +23,28 @@ class RateService
 
 
     /**
+     * MAIN FUNCTION get the average rate caculated from the other rates
+     *
+     * @param [int] $jobId
+     * @return int
+     */
+    public  function getAverageRate()
+    {
+
+        $skillsRate = $this->getSkillsRate();
+        $driversLicensesRate = $this->getDriversLicenseRate();
+
+        $workpreferencesRate = $this->getWorkPrefRate();
+        $a = [$skillsRate, $driversLicensesRate, $workpreferencesRate];
+        if (count($a)) {
+            $averageRate = array_sum($a) / count($a);
+        }
+        //get each array item and assign a job_rate to it
+        return intval($averageRate);
+    }
+
+
+    /**
      * get the rate of match of skills
      *
      * @return int
@@ -87,7 +109,7 @@ class RateService
         $hourPersonSettingsCode = $personService->getPersonWorkPrefHourSettings();
         //pass the settings_code to the assoc table to get code
         $hourPersonCode = $personService->getPersonWorkPrefHourCode($hourPersonSettingsCode);
-        
+
         //job codes
         //get the 5 digit code and pass it to the function to get code for person
         $hourJobSettingsCode = $this->getJobWorkPrefHourSettings();
@@ -131,17 +153,17 @@ class RateService
                 continue;
             }
         }
-        
+
         //total achievable score for day and night 
         $totalScore = 4 + 6;
         //collected score for day and night 
         $totalDayAndHourScore = $hourWeight + $dayWeight;
-        
+
         //match rate
         $workpreferencesMatchRate = ($totalDayAndHourScore / $totalScore);
         return  intval($workpreferencesMatchRate * 100);
     }
-    
+
     /**
      * Build and return the code for Jobs work preferences hours settings
      * returns a five digit string like 10100
@@ -159,8 +181,8 @@ class RateService
 
         return $hu1 . $hu2 . $hu3 . $hu4 . $hu5;
     }
-   
-   
+
+
     /**
      * Build and return the code for jobs work preferences days settings
      * returns a five digit string like 10100
@@ -188,26 +210,5 @@ class RateService
     {
         //get code from the associative table
         return WorkPreferenceService::workPrefSelectionCasesDays($workPrefDayCase);
-    }
-
-    /**
-     * get the average rate caculated from the other rates
-     *
-     * @param [int] $jobId
-     * @return int
-     */
-    public  function getAverageRate()
-    {     
-        
-        $skillsRate = $this->getSkillsRate();
-        $driversLicensesRate = $this->getDriversLicenseRate();
-        
-        $workpreferencesRate = $this->getWorkPrefRate();
-        $a = [$skillsRate, $driversLicensesRate, $workpreferencesRate];
-        if (count($a)) {
-            $averageRate = array_sum($a) / count($a);
-        }
-        //get each array item and assign a job_rate to it
-        return intval($averageRate);
     }
 }
