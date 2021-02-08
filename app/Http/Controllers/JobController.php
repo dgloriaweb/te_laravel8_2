@@ -48,6 +48,7 @@ class JobController extends Controller
      */
     public function show($id)
     {
+        dd('i am in jobController@show');
         //
     }
 

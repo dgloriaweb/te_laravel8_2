@@ -20,11 +20,13 @@
                 <div class="p6">
                     <h2>Recommended jobs</h2>
                     <br>
-
-                    <div class="p-6">
-                        <h5><a href="#">Potter</a></h5>
-
-                    </div>
+                    <ul>
+                        @foreach ($all_job_match_rates as $all_job_match_rate)
+                        <li class="list-none">
+                            <a href="jobs/{{$all_job_match_rate['id']}}">{{$all_job_match_rate['job_name']}}</a>
+                        </li>
+                    </ul>
+                    @endforeach
 
                 </div>
             </div>
@@ -54,16 +56,16 @@
                                 @if($categories!='id')
                                 <li class="text-lg">
                                     {{$categories}}
-                                  <ul>
-                                    @foreach($values as $key=>$value)
-                                      <li class="text-base">
-                                        {{$key}} - 
-                                         @if($value==1)<i class="fas fa-check"></i>
-                                        @else <i class="fas fa-ban"></i>
-                                        @endif
-                                      </li>
-                                      @endforeach
-                                  </ul>
+                                    <ul>
+                                        @foreach($values as $key=>$value)
+                                        <li class="text-base">
+                                            {{$key}} -
+                                            @if($value==1)<i class="fas fa-check"></i>
+                                            @else <i class="fas fa-ban"></i>
+                                            @endif
+                                        </li>
+                                        @endforeach
+                                    </ul>
                                 </li>
                                 @endif
                                 @endforeach

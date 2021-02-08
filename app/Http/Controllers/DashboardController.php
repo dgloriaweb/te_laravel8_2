@@ -28,8 +28,8 @@ class DashboardController extends Controller
 
         $drivingLicenses = $propertyService->getPersonPropertiesWithDrivingLicenses();
         $skills = $propertyService->getPersonPropertiesWithSkills();
-        
-        
+
+
         $data = [
             'title' => 'Personal settings',
             'modaltitle' => 'edit work day, time and location preferences',
@@ -39,12 +39,36 @@ class DashboardController extends Controller
             'drivingLicenses' => $drivingLicenses,
             'skills' => $skills
         ];
-        
+
         //show matching jobs array
         //job id is required, job name, match rate
-        $personJobService = new PersonJobService($person);  
+        $personJobService = new PersonJobService($person);
+        /*$data['all_job_match_rates'] =
+                array:10 [▼
+                0 => array:5 [▼
+                    "id" => 3
+                    "job_name" => "CNC machinist"
+                    "job_drivers_licenses" => array:1 [▼
+                    0 => array:7 [▶]
+                    ]
+                    "job_requirements" => array:5 [▼
+                    0 => array:3 [▼
+                        "id" => 32
+                        "job_id" => 3
+                        "skill_id" => 186
+                    ]
+                    1 => array:3 [▶]
+                    2 => array:3 [▶]
+                    3 => array:3 [▶]
+                    4 => array:3 [▶]
+                    ]
+                    "job_rate" => 66
+                ]
+                1 => array:5 [▶]
+        */
+
         $data['all_job_match_rates'] = array_slice($personJobService->getAllJobMatchRates(), 0, 10);
-        
+
         // return new PersonService($person);
         return view('dashboard', $data);
     }
