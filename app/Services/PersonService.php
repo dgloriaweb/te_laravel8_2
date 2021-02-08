@@ -69,31 +69,39 @@ class PersonService
     {
         $existingUser = Person::getPersonById($personId);
         if ($existingUser) {
-            //setup this->workpreferences array with the real user data
             $workpreferences = [
-                'id'=>$existingUser->id,
-                'workplace' => $existingUser->workplace,
-                'remote' => $existingUser->remote,
-                'workdays' => $existingUser->workdays,
-                'saturday' => $existingUser->saturday,
-                'sunday' => $existingUser->sunday,
-                'bank_holidays' => $existingUser->bank_holidays,
-                'sat_sun_bh_only' => $existingUser->sat_sun_bh_only,
-                'normal_hours' => $existingUser->normal_hours,
-                'nightshift' => $existingUser->nightshift,
-                'nightshift_only' => $existingUser->nightshift_only,
-                'other_shift' => $existingUser->other_shift,
-                'other_shift_only' => $existingUser->other_shift_only,
-                'overtime' => $existingUser->overtime
+                'id' => $existingUser->id,
+                'location' => [
+                    'workplace' => $existingUser->workplace,
+                    'remote' => $existingUser->remote,
+                ],
+                'days' => [
+                    'workdays' => $existingUser->workdays,
+                    'saturday' => $existingUser->saturday,
+                    'sunday' => $existingUser->sunday,
+                    'bank_holidays' => $existingUser->bank_holidays,
+                    'sat_sun_bh_only' => $existingUser->sat_sun_bh_only,
+                ],
+                'hours' => [
+                    'normal_hours' => $existingUser->normal_hours,
+                    'nightshift' => $existingUser->nightshift,
+                    'nightshift_only' => $existingUser->nightshift_only,
+                    'other_shift' => $existingUser->other_shift,
+                    'other_shift_only' => $existingUser->other_shift_only,
+                ],
+                'overtime' => [
+                    'overtime' => $existingUser->Overtime
+                ]
             ];
+
             return $workpreferences;
         }
     }
 
     public  function storeWorkPrefChanges($request)
     {
-        
-        if($this->person->update([ 
+
+        if ($this->person->update([
             'workplace' => $request->input('workplace') == 'on' ? 1 : 0,
             'remote' => $request->input('remote') == 'on' ? 1 : 0,
             'workdays' => $request->input('workdays') == 'on' ? 1 : 0,
@@ -107,10 +115,8 @@ class PersonService
             'other_shift' => $request->input('other_shift') == 'on' ? 1 : 0,
             'other_shift_only' => $request->input('other_shift_only') == 'on' ? 1 : 0,
             'overtime' => $request->input('overtime') == 'on' ? 1 : 0,
-        ]))
-        {
+        ])) {
             return true;
         }
-
     }
 }

@@ -30,13 +30,12 @@ class PersonJobService
             $job_rate = $rateService->getAverageRate();
             $jobs[$key]['job_rate'] = $job_rate;
         }
-
         //sort result in descending order
         $column = 'job_rate';
         usort($jobs, function ($a, $b) use ($column) {
             return $b[$column] <=> $a[$column];
         });
-
+        
         //return full array
         return $jobs;
     }

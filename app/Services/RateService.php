@@ -38,6 +38,7 @@ class RateService
 
         //get rate, from job to person
         $result = count($intersect) / count($jobSkills);
+
         return  intval($result * 100);
     }
 
@@ -197,7 +198,7 @@ class RateService
      */
     public  function getAverageRate()
     {     
-
+        
         $skillsRate = $this->getSkillsRate();
         $driversLicensesRate = $this->getDriversLicenseRate();
         
@@ -206,7 +207,6 @@ class RateService
         if (count($a)) {
             $averageRate = array_sum($a) / count($a);
         }
-
         //get each array item and assign a job_rate to it
         return intval($averageRate);
     }

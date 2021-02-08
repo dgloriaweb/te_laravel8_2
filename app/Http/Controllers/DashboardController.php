@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Services\PersonJobService;
 use Illuminate\Http\Request;
 use App\Services\PersonService;
 use App\Services\PropertyService;
@@ -27,8 +28,8 @@ class DashboardController extends Controller
 
         $drivingLicenses = $propertyService->getPersonPropertiesWithDrivingLicenses();
         $skills = $propertyService->getPersonPropertiesWithSkills();
-        // dd($skills);
-
+        
+        
         $data = [
             'title' => 'Personal settings',
             'modaltitle' => 'edit work day, time and location preferences',
@@ -38,6 +39,12 @@ class DashboardController extends Controller
             'drivingLicenses' => $drivingLicenses,
             'skills' => $skills
         ];
+        
+        //show matching jobs array
+        //job id is required, job name, match rate
+        $personJobService = new PersonJobService($person);  
+        $data['all_job_match_rates'] = array_slice($personJobService->getAllJobMatchRates(), 0, 10);
+        
         // return new PersonService($person);
         return view('dashboard', $data);
     }
