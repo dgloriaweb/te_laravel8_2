@@ -1,12 +1,34 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Models\Job;
+use App\Services\Contracts\JobServiceInterface;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class JobController extends Controller
 {
+    protected ?JobServiceInterface $jobService = null;
+
+    public function __construct(JobServiceInterface $jobService)
+    {
+        $this->jobService = $jobService;
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show(int $jobId)
+    {
+        $result = $this->jobService->getJob($jobId);
+        dd('here');
+        return response()->success($result);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +37,7 @@ class JobController extends Controller
     public function index()
     {
         $jobs = Job::all();
-        
+
 
         // return view('jobs', compact('jobs'));
     }
@@ -41,18 +63,6 @@ class JobController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-
-      
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.

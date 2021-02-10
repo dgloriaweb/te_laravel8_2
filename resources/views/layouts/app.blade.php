@@ -13,6 +13,7 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
         <script src="https://kit.fontawesome.com/56043f2234.js" crossorigin="anonymous"></script>
+        <script src="{{URL::asset('js/custom.js')}}"></script>
         
         @livewireStyles
 

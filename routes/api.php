@@ -18,3 +18,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::namespace('Api')->group(function () {
+    Route::get('/jobs/{jobId}', '\App\Http\Controllers\Api\JobController@show')->where('jobId', '[0-9]+');
+});
